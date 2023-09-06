@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>Dinner Ordering</title>
+    <link href="/static/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="content">
+    <div class="form sign-in">
+        <form action="/login" id="form" method="post">
+            <h2>Welcome</h2>
+            <label>
+                <span>username</span>
+                <input id="username" name="username" type="text"/>
+            </label>
+            <label>
+                <span>password</span>
+                <input id="password" name="password" type="password"/>
+            </label>
+        </form>
+        <!-- todo 忘记密码跳转链接 -->
+        <p class="forgot-pass"><a href="">forgot password?</a></p>
+        <button class="submit" id="login" onclick="loginClick()" type="button">Login</button>
+        <button class="sign-up" id="signup" onclick="signupClick()" type="button">Sign Up</button>
+    </div>
+</div>
+</body>
+
+<script>
+    function loginClick() {
+        const username = document.getElementById("username").value;
+        if (!username) {
+            alert("用户名不能为空");
+            return;
+        }
+
+        const password = document.getElementById("password").value;
+        if (!password) {
+            alert("密码不能为空");
+            return;
+        }
+
+        // 跳转至LoginController，进行登录校验
+        document.getElementById("form").submit();
+    }
+
+    function signupClick() {
+        // todo 跳转至注册页面
+        window.location.href = "/static/html/signup.html";
+    }
+</script>
+
+</html>
