@@ -23,6 +23,6 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '/home/vsts/work/1/s/target'
+    PathtoPublish: '/home/vsts/work/1/s/target/DinnerOrder-1.0.war'
     ArtifactName: 'dinner-order'
     publishLocation: 'Container'
