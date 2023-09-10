@@ -43,6 +43,6 @@ steps:
     runOptions: 'commands'
     commands: |
       cd /opt/apache-tomcat-10.1.13/
-      sh bin/shutdown.sh
-      sh bin/startup.sh
+      ./bin/shutdown.sh
+      ./bin/startup.sh
     readyTimeout: '20000'
