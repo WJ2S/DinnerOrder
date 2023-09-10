@@ -36,3 +36,13 @@ steps:
     port: '22'
     username: 'root'
     password: 'Sydney123'
+
+- task: SSH@0
+  inputs:
+    sshEndpoint: 'Linux云服务器'
+    runOptions: 'commands'
+    commands: |
+      cd /opt/apache-tomcat-10.1.13/
+      sh bin/shutdown.sh
+      sh bin/startup.sh
+    readyTimeout: '20000'
