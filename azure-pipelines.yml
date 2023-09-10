@@ -40,6 +40,6 @@ steps:
 - task: SSH@0
   inputs:
     sshEndpoint: 'Linux云服务器'
-    runOptions: 'script'
-    scriptPath: '/mnt/run.sh'
+    runOptions: 'commands'
+    commands: 'nohup sh /mnt/run.sh > /mnt/run.log 2>&1 &'
     readyTimeout: '20000'
