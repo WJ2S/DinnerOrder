@@ -29,8 +29,8 @@ steps:
 
 - task: sftpupload@1
   inputs:
-    sourceFolder: '/home/vsts/work/1/s/target/DinnerOrder-1.0.war'
-    contents: '**'
+    sourceFolder: '/home/vsts/work/1/s/target/'
+    contents: 'DinnerOrder-1.0.war'
     targetFolder: '/mnt/'
     host: '47.91.41.9'
     port: '22'
