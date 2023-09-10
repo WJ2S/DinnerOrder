@@ -42,7 +42,6 @@ steps:
     sshEndpoint: 'Linux云服务器'
     runOptions: 'commands'
     commands: |
-      cd /opt/apache-tomcat-10.1.13/
-      ./bin/shutdown.sh
-      ./bin/startup.sh
+      sh /opt/apache-tomcat-10.1.13/bin/shutdown.sh
+      sh /opt/apache-tomcat-10.1.13/bin/startup.sh
     readyTimeout: '20000'
