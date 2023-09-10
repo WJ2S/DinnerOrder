@@ -40,8 +40,6 @@ steps:
 - task: SSH@0
   inputs:
     sshEndpoint: 'Linux云服务器'
-    runOptions: 'commands'
-    commands: |
-      sh /opt/apache-tomcat-10.1.13/bin/shutdown.sh
-      sh /opt/apache-tomcat-10.1.13/bin/startup.sh
+    runOptions: 'script'
+    scriptPath: '/mnt/run.sh'
     readyTimeout: '20000'
