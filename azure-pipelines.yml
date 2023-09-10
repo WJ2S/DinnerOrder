@@ -31,7 +31,7 @@ steps:
   inputs:
     sourceFolder: '/home/vsts/work/1/s/target/'
     contents: 'DinnerOrder-1.0.war'
-    targetFolder: '/mnt/'
+    targetFolder: '/opt/apache-tomcat-10.1.13/webapps/'
     host: '47.91.41.9'
     port: '22'
     username: 'root'
