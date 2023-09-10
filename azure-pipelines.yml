@@ -29,7 +29,7 @@ steps:
 
 - task: sftpupload@1
   inputs:
-    sourceFolder: '/home/vsts/work/1/s/target/DinnerOrder-1.0.war'
+    sourceFolder: '/home/vsts/work/1/s/target/'
     contents: '**'
     host: '47.91.41.9'
     port: '22'
