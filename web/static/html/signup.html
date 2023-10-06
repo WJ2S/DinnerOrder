@@ -1,12 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <title>Dinner Ordering</title>
+    <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
-
-用户注册
-
+<div class="content">
+    <div class="form sign-up">
+        <form action="/DinnerOrder-1.0/signup" id="form" method="post">
+            <h2>Register</h2>
+            <label>
+                <span>username</span>
+                <input id="username" name="username" type="text"/>
+            </label>
+            <label>
+                <span>email</span>
+                <input id="email" name="email" type="text"/>
+            </label>
+            <label>
+                <span>password</span>
+                <input id="password" name="password" type="password"/>
+            </label>
+            <label>
+                <span>confirm password</span>
+                <input id="confirm" name="confirm" type="password"/>
+            </label>
+        </form>
+        <button class="submit" id="signup" onclick="signupClick()" type="button">Submit</button>
+    </div>
+</div>
 </body>
+
+<script>
+    function signupClick() {
+        let username = document.getElementById("username").value;
+        if (!username) {
+            alert("Username can not be empty");
+            return;
+        }
+
+        let email = document.getElementById("email").value;
+        if (!email) {
+            alert("Email can not be empty");
+            return;
+        }
+
+        let password = document.getElementById("password").value;
+        if (password.length < 6) {
+            alert("Password must have at least 6 characters");
+            return;
+        }
+
+        let confirm = document.getElementById("confirm").value;
+        if (confirm !== password) {
+            alert("Password unmatched");
+            return;
+        }
+
+        // 跳转至Signup-Controller，进行登录校验
+        document.getElementById("form").submit();
+    }
+</script>
 </html>
