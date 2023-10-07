@@ -4,11 +4,12 @@
     <meta charset="utf-8">
     <title>Dinner Ordering</title>
     <link href="./static/css/style.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/static/js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 <div class="content">
     <div class="form sign-in">
-        <form action="/DinnerOrder-1.0/login" id="form" method="post">
+        <form id="form" method="post">
             <h2>Welcome</h2>
             <label>
                 <span>username</span>
@@ -38,12 +39,31 @@
             alert("Password can not be empty");
             return;
         }
-        // 跳转至LoginController，进行登录校验
-        document.getElementById("form").submit();
+        // 登录校验
+        $.post({
+            url: "${pageContext.request.contextPath}/login",
+            data: {
+                "username": $("#username").val(),
+                "password": $("#password").val(),
+            },
+            success: function (result) {
+                result = $.parseJSON(result);
+                // 登录成功
+                if (result.code === 1) {
+                    // 页面跳转
+                    window.location.href = "./static/jsp/home.jsp"
+                }
+                // 登录失败
+                else {
+                    // 显示失败提醒
+                    alert(result.msg);
+                }
+            }
+        })
     }
+
     function signupClick() {
-        // todo 跳转至注册页面
-        window.location.href = "./static/html/signup.html";
+        window.location.href = "./static/jsp/signup.jsp";
     }
 </script>
 </html>
