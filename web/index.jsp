@@ -48,14 +48,12 @@
             },
             success: function (result) {
                 result = $.parseJSON(result);
-                // 登录成功
+                // 登录成功，跳转至首页
                 if (result.code === 1) {
-                    // 页面跳转
                     window.location.href = "./static/jsp/home.jsp"
                 }
-                // 登录失败
+                // 登录失败，显示失败提醒
                 else {
-                    // 显示失败提醒
                     alert(result.msg);
                 }
             }

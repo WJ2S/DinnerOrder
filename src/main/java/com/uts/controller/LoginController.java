@@ -16,24 +16,17 @@ public class LoginController {
     @RequestMapping("login")
     public String login(String username, String password) {
         // 用户名密码校验
-        User user = userService.check(username, password);
-        if (user != null) {
-            // 验证通过，跳转至首页
-            return JSON.toJSONString(Result.success(user));
-        }
-        // 验证未通过，返回登录页并提示
-        return JSON.toJSONString(Result.error("username or password incorrect"));
+        Result<User> result = userService.login(username, password);
+        // 结果返回
+        return JSON.toJSONString(result);
     }
 
 
     @RequestMapping("signup")
-    public String signup(String username, String password) {
-
-        // todo 注册逻辑
-        System.out.println(username);
-        System.out.println(password);
-
-        // todo 页面跳转
-        return "home";
+    public String signup(String username, String email, String password) {
+        // 用户注册
+        Result<User> result = userService.signup(username, email, password);
+        // 结果返回
+        return JSON.toJSONString(result);
     }
 }
