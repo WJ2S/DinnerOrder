@@ -20,8 +20,7 @@
                 <input id="password" name="password" type="password"/>
             </label>
         </form>
-        <!-- todo 忘记密码跳转链接 -->
-        <p class="forgot-pass"><a href="">forgot password?</a></p>
+        <p class="forgot-pass"><a href="${pageContext.request.contextPath}/static/jsp/forget.jsp">forgot password?</a></p>
         <button class="submit" id="login" onclick="loginClick()" type="button">Login</button>
         <button class="sign-up" id="signup" onclick="signupClick()" type="button">Sign Up</button>
     </div>
@@ -29,12 +28,12 @@
 </body>
 <script>
     function loginClick() {
-        const username = document.getElementById("username").value;
+        const username = $("#username").val();
         if (!username) {
             alert("Username can not be empty");
             return;
         }
-        const password = document.getElementById("password").value;
+        const password = $("#password").val();
         if (!password) {
             alert("Password can not be empty");
             return;
@@ -43,8 +42,8 @@
         $.post({
             url: "${pageContext.request.contextPath}/login",
             data: {
-                "username": $("#username").val(),
-                "password": $("#password").val(),
+                "username": username,
+                "password": password,
             },
             success: function (result) {
                 result = $.parseJSON(result);
