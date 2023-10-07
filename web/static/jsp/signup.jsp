@@ -4,11 +4,12 @@
     <meta charset="utf-8">
     <title>Dinner Ordering</title>
     <link href="../css/style.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/static/js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 <div class="content">
     <div class="form sign-up">
-        <form action="/DinnerOrder-1.0/signup" id="form" method="post">
+        <form id="form" method="post">
             <h2>Register</h2>
             <label>
                 <span>username</span>
@@ -58,8 +59,27 @@
             return;
         }
 
-        // 跳转至Signup-Controller，进行登录校验
-        document.getElementById("form").submit();
+        // 提交表单
+        $.post({
+            url: "${pageContext.request.contextPath}/signup",
+            data: {
+                "username": $("#username").val(),
+                "email": $("#email").val(),
+                "password": $("#password").val(),
+            },
+            success: function (result) {
+                result = $.parseJSON(result)
+                // 注册成功，跳转至首页
+                if (result.code === 1) {
+                    window.location.href = "./home.jsp"
+                }
+                // 注册失败，提示错误信息
+                else {
+                    alert(result.msg);
+                }
+            }
+        })
+
     }
 </script>
 </html>
