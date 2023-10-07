@@ -64,4 +64,21 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         this.save(user);
         return Result.success(user);
     }
+
+
+    public Result<User> find_my_password(String username, String email) {
+        LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<>();
+
+        // 通过用户名及邮箱查找
+        wrapper.eq(User::getUsername, username).eq(User::getEmail, email);
+        User user = this.getOne(wrapper);
+
+        // 未找到该用户
+        if (user == null) {
+            return Result.error("username or email incorrect");
+        }
+
+        // 找到该用户
+        return Result.success(user);
+    }
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class LoginController {
+public class UserController {
     @Autowired
     private UserServiceImpl userService;
 
@@ -26,6 +26,16 @@ public class LoginController {
     public String signup(String username, String email, String password) {
         // 用户注册
         Result<User> result = userService.signup(username, email, password);
+        // 结果返回
+        return JSON.toJSONString(result);
+    }
+
+    @RequestMapping("find_my_password")
+    public String findMyPassword(String username, String email) {
+        System.out.println(username);
+        System.out.println(email);
+        // 查找用户
+        Result<User> result = userService.find_my_password(username, email);
         // 结果返回
         return JSON.toJSONString(result);
     }
