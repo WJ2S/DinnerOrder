@@ -5,7 +5,7 @@
 </head>
 <body>
 
-页面首页，登录后展示
+Login Success, this is 'Home Page'
 
 </body>
 </html>
